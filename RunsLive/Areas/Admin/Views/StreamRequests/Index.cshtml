@@ -1,0 +1,32 @@
+﻿@model IEnumerable<RunsLive.Models.ViewModels.StreamRequestViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Stream Requests</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StreamName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    if (item.Status == "Pending")
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreamName)
+            </td>
+            <td>
+                @Html.ActionLink("Resolve", "Resolve", new {id = item.Id})
+            </td>
+        </tr>
+    }
+}
+
+</table>

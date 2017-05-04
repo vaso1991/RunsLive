@@ -1,0 +1,48 @@
+﻿@model IEnumerable<RunsLive.Models.ViewModels.VodViewModel>
+@{
+    ViewBag.Title = $"{Model.First().GameName} Vods";
+}
+@if (Model.Any())
+{
+    <h2>@Model.First().GameName Vods</h2>
+}
+else
+{
+
+    <h2> Vods</h2>
+}
+
+<br />
+
+@foreach (var vm in Model)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <script src="http://player.twitch.tv/js/embed/v1.js"></script>
+                <div id="vod"></div>
+                <script type="text/javascript">
+                    var options = {
+                        width: 350,
+                        height: 250,
+                        channel: "",
+                        video: "@vm.VideoId",
+                        collection: "",
+                        autoplay: false
+                    };
+                    var player = new Twitch.Player("vod", options);
+                    player.setVolume(0.5);
+                </script>
+                <div>
+                    <h4 class="vod_title">
+                        @vm.VideoDescription
+                    </h4>
+                    <p>
+                        By @vm.StreamerName
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

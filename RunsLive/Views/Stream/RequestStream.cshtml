@@ -1,0 +1,27 @@
+﻿@model RunsLive.Models.ViewModels.StreamRequestViewModel
+@{
+    ViewBag.Title = "RequestStream";
+}
+
+<h2>Request Stream</h2>
+<br />
+@using (Html.BeginForm())
+{
+    <dl class="dl-horizontal">
+        <dt>
+
+            @Html.LabelFor(vm => vm.StreamName)
+        </dt>
+        <dd>
+            @Html.EditorFor(vm => vm.StreamName)
+            @Html.ValidationMessageFor(vm => vm.StreamName)
+        </dd>
+
+
+    </dl>
+
+    <input type="hidden" id="RequestedBy" name="RequestedBy" value="@this.User.Identity.Name" />
+
+    <input type="submit" value="Request" />
+    
+}

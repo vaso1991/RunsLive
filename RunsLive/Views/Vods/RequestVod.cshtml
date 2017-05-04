@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RunsLive.Models.ViewModels.VodRequestViewModel>
+@{
+    ViewBag.Title = "RequestVod";
+}
+
+<h2>Request Vod</h2>
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(vm => vm.First().GameName)
+        </dt>
+        <dd>
+            <select id="GameName" name="GameName" placeholder="Game Name">
+                @foreach (var game in Model)
+                {
+                    <option value="@game.GameName">@game.GameName</option>
+                }
+            </select>
+        </dd>
+        <dt>
+            @Html.LabelFor(vm => vm.First().VideoDescription)
+        </dt>
+        <dd>
+            @Html.EditorFor(vm => vm.First().VideoDescription)
+            @Html.ValidationMessageFor(vm => vm.First().VideoDescription)
+        </dd>
+        <dt>
+            @Html.LabelFor(vm => vm.First().StreamerName)
+        </dt>
+        <dd>
+            @Html.EditorFor(vm => vm.First().StreamerName)
+            @Html.ValidationMessageFor(vm => vm.First().StreamerName)
+        </dd>
+        <dt>
+
+            @Html.LabelFor(vm => vm.First().VideoId)
+        </dt>
+        <dd>
+            @Html.EditorFor(vm => vm.First().VideoId)
+            @Html.ValidationMessageFor(vm => vm.First().VideoId)
+        </dd>
+
+       
+    </dl>
+
+    <input type="hidden" id="RequestedBy" name="RequestedBy" value="@this.User.Identity.Name" />
+    <input type="submit" value="Request" />
+
+}
+

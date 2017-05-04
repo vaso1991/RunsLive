@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RunsLive.Models.ViewModels.StreamRequestViewModel>
+@{
+    ViewBag.Title = "RequestedStreams";
+}
+
+<h2>Requested Streams</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StreamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<RunsLive.Models.ViewModels.GenresViewModel>
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>Genres</h2>
+
+
+@foreach (var genre in Model)
+{
+    @Html.ActionLink(genre.Name, "Details", "Genres", new { id = genre.Id }, new { id = genre.Id })
+    <br />
+}

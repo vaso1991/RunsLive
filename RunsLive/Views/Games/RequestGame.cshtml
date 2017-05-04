@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RunsLive.Models.ViewModels.GameRequestViewModel>
+@{
+    ViewBag.Title = "Request Game";
+}
+
+<h2>Request Game</h2>
+
+@using (Html.BeginForm())
+{
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(vm => vm.First().GenreName)
+        </dt>
+        <dd>
+            <select id="GenreName" name="GenreName">
+                @foreach (var genre in Model)
+                {
+                    <option value="@genre.GenreName">@genre.GenreName</option>
+                }
+            </select>
+        </dd>
+        <dt>
+            @Html.LabelFor(vm => vm.First().Name)
+        </dt>
+        <dd>
+            @Html.EditorFor(vm => vm.First().Name, new { htmlAttributes = new { @Value = "" } })
+            @Html.ValidationMessageFor(vm => vm.First().Name)
+        </dd>
+        <dt>
+            @Html.LabelFor(vm => vm.First().ImageUrl)
+        </dt>
+        <dd>
+            @Html.EditorFor(vm => vm.First().ImageUrl)
+            @Html.ValidationMessageFor(vm => vm.First().ImageUrl)
+        </dd>
+
+
+    </dl>
+
+    <input type="hidden" id="RequestedBy" name="RequestedBy" value="@this.User.Identity.Name" />
+
+    <input type="submit" value="Request" />
+
+}
+

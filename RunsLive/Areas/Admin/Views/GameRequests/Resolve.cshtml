@@ -1,0 +1,38 @@
+﻿@model RunsLive.Models.ViewModels.GameRequestViewModel
+@{
+    ViewBag.Title = "Resolve";
+}
+
+<h2>Resolve</h2>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GenreName) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GenreName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl) :
+        </dt>
+        <dd>
+            <img class="portrait" src="@Model.ImageUrl">
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Deny", "DenyGame", new { id = Model.Id })
+    <br/>
+    @Html.ActionLink("Approve", "ApproveGame", new { id = Model.Id })
+    <br />
+    @Html.ActionLink("Back to List", "Index")
+</p>

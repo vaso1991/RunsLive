@@ -1,0 +1,60 @@
+﻿@model RunsLive.Models.ViewModels.VodRequestViewModel
+@{
+    ViewBag.Title = "Resolve";
+}
+
+<h2>Resolve</h2>
+
+<div>
+    <h4>Vod</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GameName) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GameName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StreamerName) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StreamerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoDescription) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VideoDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoId) :
+        </dt>
+        <dd>
+            <div>
+                <script src="http://player.twitch.tv/js/embed/v1.js"></script>
+                <div id="vod"></div>
+                <script type="text/javascript">
+                    var options = {
+                        width: 350,
+                        height: 250,
+                        channel: "",
+                        video: "@Model.VideoId",
+                        collection: "",
+                        autoplay: false
+                    };
+                    var player = new Twitch.Player("vod", options);
+                    player.setVolume(0.5);
+                </script>
+            </div>
+        </dd>
+    </dl>
+</div>
+<p>
+ 
+    @Html.ActionLink("Back to List", "Index")
+    <br />
+    @Html.ActionLink("Deny", "DenyVod",new {id = Model.Id})
+    <br />
+    @Html.ActionLink("Approve", "ApproveVod", new { id = Model.Id })
+</p>

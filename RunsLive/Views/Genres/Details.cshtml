@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RunsLive.Models.ViewModels.GamesViewModel>
+@{
+    ViewBag.Title = "Details";
+}
+@if (Model.Any())
+{
+    <h2>@Model.First().GenreName Games</h2>
+}
+else
+{
+    <h2>Games</h2>
+}
+
+<div class="row">
+    @foreach (var vm in Model)
+    {
+        <div class="col-md-3">
+            <div>
+                <a title="@vm.Name" href="/games/vods/@vm.Id">
+                    <img class="portrait" src="@vm.ImageUrl">
+                    <div>
+                        <h3 class="card_title">
+                            @vm.Name
+                        </h3>
+                        <p class="card_info">
+                            @vm.GenreName
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+</div>

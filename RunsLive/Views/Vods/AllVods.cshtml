@@ -1,0 +1,34 @@
+﻿@model IEnumerable<RunsLive.Models.ViewModels.VodViewModel>
+
+@{
+    ViewBag.Title = "Vods";
+}
+
+
+
+    @foreach (var vm in Model)
+    {
+
+        <dl class="dl-horizontal">
+            <dt>
+
+            </dt>
+            <dd>
+                <script src="http://player.twitch.tv/js/embed/v1.js"></script>
+                <div id="vod"></div>
+                <script type="text/javascript">
+                    var options = {
+                        width: 400,
+                        height: 300,
+                        channel: "",
+                        video: "@vm.VideoId",
+                        collection: "",
+                        autoplay: false
+                    };
+                    var player = new Twitch.Player("vod", options);
+                    player.setVolume(0.5);
+                </script>
+            </dd>
+        </dl>
+
+    }
